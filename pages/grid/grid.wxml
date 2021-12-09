@@ -1,0 +1,52 @@
+<view>
+  <view wx:for="{{todayList}}">
+    <scroll-view scroll-x="true" scroll-y="true" class='scrollClass'>
+      <view class="table">
+        <view class="tableHeader">
+          <view class="th headerText">
+            <view class="cellLabel">颜色\尺码</view>
+          </view>
+          <block wx:for="{{item.size}}" wx:for-item="element">
+            <!-- M,S,XL -->
+            <view class="th">
+              <view class="cellLabel">{{element}}</view>
+            </view>
+          </block>
+          <block>
+            <!-- 小计 -->
+            <view class="th">
+              <view class="cellLabel">小计</view>
+            </view>
+          </block>
+        </view>
+        <block wx:for="{{item.listData}}" wx:for-item="cell">
+          <view class="tableMain">
+            <!-- 黑色白色红色 -->
+            <view class="td headerText">
+              <view class="cellLabel">{{cell.colorName}}</view>
+            </view>
+            <block>
+              <view class="td" wx:for="{{cell.sizeArr}}" wx:for-item="every" wx:key="index">
+                <view class="tableText">{{every.sizeValue}}</view>
+              </view>
+            </block>
+            <view class="td">
+              <view class="tableText">{{cell.subtotal}}</view>
+            </view>
+          </view>
+        </block>
+        <block>
+          <view class="tableMain">
+            <!-- 总计 -->
+            <view class="td headerText">
+              <view class="cellLabel">总计</view>
+            </view>
+            <view class="totalLocation">
+              <view class="totalText">{{item.total}}</view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+</view>
